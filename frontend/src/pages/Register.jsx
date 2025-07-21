@@ -12,7 +12,7 @@ export default function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    phonenumber: '',
     password: '',
     confirmPassword: ''
   });
@@ -28,7 +28,7 @@ export default function Register() {
     const validationErrors = {};
     if (!formData.name.trim()) validationErrors.name = 'Name is required';
     if (!formData.email.trim()) validationErrors.email = 'Email is required';
-    if (!formData.phone.trim()) validationErrors.phone = 'Phone number is required';
+    if (!formData.phonenumber.trim()) validationErrors.phonenumber = 'Phone number is required';
     if (!formData.password.trim()) validationErrors.password = 'Password is required';
     if (formData.password.length < 6) validationErrors.password = 'Password must be at least 6 characters';
     if (formData.password !== formData.confirmPassword) {
@@ -47,7 +47,7 @@ export default function Register() {
       const userData = {
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        phonenumber: formData.phonenumber,
         password: formData.password
       };
       
@@ -148,21 +148,21 @@ export default function Register() {
 
             {/* Phone Field */}
             <div>
-              <label htmlFor="phone" className="form-label text-gray-300">Phone Number</label>
+              <label htmlFor="phonenumber" className="form-label text-gray-300">Phone Number</label>
               <div className="relative">
                 <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input
-                  id="phone"
-                  name="phone"
+                  id="phonenumber"
+                  name="phonenumber"
                   type="tel"
                   placeholder="Enter your phone number"
-                  value={formData.phone}
+                  value={formData.phonenumber}
                   onChange={handleInputChange}
-                  className={`w-full pl-10 pr-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-400 ${errors.phone ? 'border-red-500' : ''}`}
+                  className={`w-full pl-10 pr-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-400 ${errors.phonenumber ? 'border-red-500' : ''}`}
                   required
                 />
               </div>
-              {errors.phone && <p className="error-text text-red-400">{errors.phone}</p>}
+              {errors.phonenumber && <p className="error-text text-red-400">{errors.phonenumber}</p>}
             </div>
             
             {/* Password Field */}
@@ -266,7 +266,7 @@ export default function Register() {
             <p className="text-gray-300">
               Already have an account?{' '}
               <Link 
-                to="/auth" 
+                to="/login" 
                 className="text-orange-400 hover:text-orange-300 font-medium transition-colors"
               >
                 Sign in here

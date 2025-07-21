@@ -59,9 +59,8 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      // Map phone to phonenumber for backend compatibility
-      const payload = { ...userData, phonenumber: userData.phone };
-      delete payload.phone;
+      // Ensure 'phonenumber' field is included in the payload
+      const payload = { ...userData, phonenumber: userData.phonenumber };
       const response = await authAPI.register(payload);
       // Always expect backend to return { user: { ...user, token } }
       if (response.data.user && response.data.user.token) {

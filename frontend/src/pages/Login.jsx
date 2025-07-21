@@ -121,7 +121,7 @@ export default function Login() {
               </div>
             </div>
             <h1 className="text-2xl font-bold text-white mb-4">
-              Welcome back, {user?.name || 'User'}!
+              Welcome back, {user?.name || user?.email || 'User'}!
             </h1>
             <p className="text-gray-300 mb-6">
               You are already signed in. Redirecting to products...
@@ -289,7 +289,7 @@ export default function Login() {
             <p className="text-gray-300">
               Don't have an account?{' '}
               <Link 
-                to="/auth/register" 
+                to="/register" 
                 className="text-orange-400 hover:text-orange-300 font-medium transition-colors"
               >
                 Sign up here

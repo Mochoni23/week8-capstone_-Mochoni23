@@ -35,17 +35,18 @@ function AppRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/products" element={<Products />} />
 
           <Route element={<PublicRoute />}>
             <Route path="/auth" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
           </Route>
         </Route>
 
         {/* Protected user routes */}
         <Route element={<AppLayout />}>
           <Route element={<ProtectedRoute />}>
+            <Route path="/products" element={<Products />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/cart" element={<Cart />} />
           </Route>

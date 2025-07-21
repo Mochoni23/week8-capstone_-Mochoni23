@@ -9,7 +9,7 @@ const {
   issueGas,
   approveProduct,
   rejectProduct
-} = require('../Controllers/productController');
+} = require('../Controllers/ProductController');
 const { protect, admin } = require('../middleware/auth');
 
 // Public routes

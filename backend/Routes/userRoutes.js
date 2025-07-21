@@ -9,7 +9,7 @@ const {
   getUserIssuedGases,
   returnGasCylinder,
   getMyOrders
-} = require('../Controllers/userController');
+} = require('../Controllers/UserController');
 const { protect, admin } = require('../middleware/auth');
 
 const router = express.Router();

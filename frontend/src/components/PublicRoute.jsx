@@ -2,16 +2,12 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import LoadingSpinner from "./LoadingSpinner";
 
-export default function PublicRoute() {
-  const { isAuthenticated, loading, isAdmin } = useAuth();
+export default function ProtectedRoute() {
+  const { isAuthenticated, loading } = useAuth();
   
   if (loading) {
     return <LoadingSpinner />;
   }
   
-  if (isAuthenticated) {
-    return <Navigate to={isAdmin ? "/admin/users" : "/products"} replace />;
-  }
-  
-  return <Outlet />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/auth" replace />;
 } 
