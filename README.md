@@ -1,6 +1,109 @@
-<<<<<<< HEAD
-# week8-capstone_-Mochoni23
-=======
+# Project Structure
+
+```
+week8-capstone_-Mochoni23/
+├── backend/
+│   ├── Controllers/
+│   │   ├── UserController.js
+│   │   ├── ProductController.js
+│   │   ├── orderCartController.js
+│   │   └── authController.js
+│   ├── Models/
+│   │   ├── User.js
+│   │   ├── Product.js
+│   │   ├── Order.js
+│   │   └── Cart.js
+│   ├── Routes/
+│   │   ├── userRoutes.js
+│   │   ├── productRoutes.js
+│   │   ├── authRoutes.js
+│   │   └── orderCartRoutes.js
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── config/
+│   │   └── db.js
+│   ├── add-products.js
+│   ├── create-admin.js
+│   ├── seed-products.js
+│   ├── server.js
+│   ├── test-auth-flow.js
+│   ├── test-frontend-flow.js
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── postcss.config.js
+│   └── README.md
+├── frontend/
+│   ├── public/
+│   │   ├── images/
+│   │   │   ├── 6kg-ola-gas.png
+│   │   │   ├── 6kg-pro-gas.png
+│   │   │   ├── 6kg-total.jpg
+│   │   │   ├── 6kg-k-gas.png
+│   │   │   ├── 6kg-afri-gas.png
+│   │   │   ├── 50kg-pro-gas.png
+│   │   │   ├── 50kg-total.png
+│   │   │   ├── 45kg-afri-gas.png
+│   │   │   ├── 50kg-k-gas.png
+│   │   │   ├── 13kg-total.png
+│   │   │   ├── 13kg-pro-gas.png
+│   │   │   ├── 13kg-k-gas.png
+│   │   │   ├── 13kg-ola-gas.jpg
+│   │   │   └── 13kg-afrigas.png
+│   │   ├── images.js
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── images/ (same as public/images)
+│   │   │   ├── images.js
+│   │   │   └── react.svg
+│   │   ├── components/
+│   │   │   ├── AdminRoute.jsx
+│   │   │   ├── BrandProductCard.jsx
+│   │   │   ├── CartIcon.jsx
+│   │   │   ├── LoadingSpinner.jsx
+│   │   │   ├── Product.jsx
+│   │   │   ├── ProtectedRoute.jsx
+│   │   │   ├── PublicRoute.jsx
+│   │   │   └── Layout/
+│   │   │       ├── AppLayout.jsx
+│   │   │       ├── Footer.jsx
+│   │   │       ├── Header.jsx
+│   │   │       └── PublicLayout.jsx
+│   │   ├── context/
+│   │   │   ├── AuthContext.jsx
+│   │   │   └── CartContext.jsx
+│   │   ├── pages/
+│   │   │   ├── About.jsx
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   ├── AdminOrders.jsx
+│   │   │   ├── AdminProducts.jsx
+│   │   │   ├── AdminUsers.jsx
+│   │   │   ├── Cart.jsx
+│   │   │   ├── Contact.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Orders.jsx
+│   │   │   ├── Products.jsx
+│   │   │   └── Register.jsx
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   └── README.md
+├── .gitignore
+└── README.md
+```
+
 # Mobigas - Gas Cylinder Delivery Management System
 
 A modern React-based frontend for the Mobigas gas cylinder delivery management system, built with React Router, Tailwind CSS, and comprehensive authentication.
@@ -206,4 +309,3 @@ For support and questions:
 ---
 
 **Mobigas** - Your trusted gas delivery partner across Kenya. 
->>>>>>> b7cce76 ()
