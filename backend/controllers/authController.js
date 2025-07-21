@@ -3,11 +3,11 @@ const User = require('../Models/User');
 const bcrypt = require('bcryptjs');
 
 const registerUser = async (req, res) => {
-    const { name, email, password, phone, role } = req.body;
+    const { name, email, password, phonenumber, role } = req.body;
     
     try {
         // Check if user already exists
-        const existingUser = await User.findOne({ $or: [{ email }, { phonenumber: phone }] });
+        const existingUser = await User.findOne({ $or: [{ email }, { phonenumber }] });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
@@ -23,30 +23,22 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ message: 'Please enter a valid email address (e.g., user@example.com)' });
         }
 
-        // Split name into firstname and lastname
-        const nameParts = name.trim().split(' ');
-        const firstname = nameParts[0] || '';
-        const lastname = nameParts.slice(1).join(' ') || '';
-
         // Create new user (password will be hashed by the pre-save hook)
-        const user = await User.create({
-            username: email, // Use email as username
+         const user = await User.create({
+            name,
+            username: email,
             email,
-            password: password, // Will be hashed by pre-save hook
-            firstname,
-            lastname,
-            address: 'Nairobi, Kenya', // Default address
-            role: role || 'user',
-            phonenumber: phone
+            password: password,
+            phonenumber,
+            role: role || 'user'
         });
 
         res.status(201).json({
             message: 'User registered successfully',
             user: {
                 id: user._id,
-                username: user.username,
                 email: user.email,
-                name: `${user.firstname} ${user.lastname}`.trim(),
+                name: user.name,
                 role: user.role,
                 phonenumber: user.phonenumber,
                 token: generateToken(user._id)
@@ -75,7 +67,7 @@ const login = async (req, res) => {
                 _id: user._id,
                 username: user.username,
                 email: user.email,
-                name: `${user.firstname} ${user.lastname}`.trim(),
+                name: user.name,
                 role: user.role,
                 token: generateToken(user._id)
             });

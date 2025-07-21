@@ -2,11 +2,17 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Full name is required'],
+        trim: true
+    },
     username: {
         type: String,
-        required: true,
+        required: [true, 'Username is required'],
         unique: true,
-        trim: true
+        lowercase: true,
+        trim: true,
     },
     email: {
         type: String,
@@ -14,39 +20,34 @@ const userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true,
         trim: true,
-        match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email address (e.g., user@example.com)']
+        match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email address']
     },
-    firstname: {
+    phonenumber: {
         type: String,
-        required: true,
-        trim: true
+        required: [true, 'Phone number is required'],
+        unique: true,
+        validate: {
+            validator: function(v) {
+                return /^[0-9]{10,15}$/.test(v); // Basic phone number validation
+            },
+            message: props => `${props.value} is not a valid phone number!`
+        }
     },
-    lastname: {
-        type: String,
-        required: true,
-        trim: true
-    },
-
     password: {
         type: String,
-        required: true,
+        required: [true, 'Password is required'],
         minlength: 6,
-        select: false // Never returned in queries
+        select: false
     },
     role: {
         type: String,
         enum: ['user', 'admin'],
         default: 'user'
     },
-    phonenumber: {
-        type: String,
-        required: true,
-        unique: true
-    },
     issuedGases: [{
         gasId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Product', // Changed from 'Gas' to match your product model
+            ref: 'Product',
             required: true
         },
         issuedAt: {
@@ -70,8 +71,20 @@ const userSchema = new mongoose.Schema({
 // Hash password before saving
 userSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next();
-    this.password = await bcrypt.hash(this.password, 12); // Increased salt rounds to 12
-    next();
+    
+    try {
+        // Clean phone number before saving
+        if (this.isModified('phonenumber')) {
+            if (this.phonenumber) {
+                this.phonenumber = this.phonenumber.replace(/\D/g, ''); // Remove all non-digit characters
+            }
+        }
+        
+        this.password = await bcrypt.hash(this.password, 12);
+        next();
+    } catch (err) {
+        next(err);
+    }
 });
 
 // Method to compare passwords

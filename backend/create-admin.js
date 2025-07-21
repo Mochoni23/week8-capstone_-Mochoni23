@@ -6,8 +6,8 @@ require('dotenv').config();
 const adminUser = {
     name: 'Admin User',
     email: 'admin@mobigas.com',
-    password: 'admin123',
-    phone: '+254115479310',
+    password: 'Admin@2024!',
+    phonenumber: '254115479310', // digits only
     role: 'admin'
 };
 
@@ -55,6 +55,12 @@ async function createAdminUser() {
                 await existingAdmin.save();
                 log('✅ Updated existing user to admin role', 'green');
             }
+
+            // Always update the password to the new one
+            const bcrypt = require('bcryptjs');
+            existingAdmin.password = await bcrypt.hash(adminUser.password, 12);
+            await existingAdmin.save();
+            log('✅ Updated admin password', 'green');
             
             return existingAdmin;
         }
@@ -66,14 +72,14 @@ async function createAdminUser() {
 
         // Create new admin user
         const user = await User.create({
+            name: adminUser.name,
             username: adminUser.email,
             email: adminUser.email,
             password: adminUser.password,
             firstname,
             lastname,
-            address: 'Nairobi, Kenya',
-            role: 'admin',
-            phonenumber: adminUser.phone
+            phonenumber: adminUser.phonenumber,
+            role: 'admin'
         });
 
         log('✅ Admin user created successfully!', 'green');
