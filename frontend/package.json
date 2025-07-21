@@ -12,11 +12,13 @@
   "dependencies": {
     "@headlessui/react": "^2.2.4",
     "axios": "^1.10.0",
+    "leaflet": "^1.9.4",
     "lucide-react": "^0.525.0",
     "papaparse": "^5.5.3",
     "react": "19.0.0-rc.1",
     "react-dom": "19.0.0-rc.1",
     "react-hot-toast": "^2.5.2",
+    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.7.0"
   },
   "devDependencies": {
