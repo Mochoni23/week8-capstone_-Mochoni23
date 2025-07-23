@@ -253,7 +253,7 @@ pnpm build
 3. Deploy automatically on push to main branch
    
 ### View  the Deployment on Vercel 
-week8-capstone-mochoni23.vercel.app
+[View Live Deployment on Vercel](https://week8-capstone-mochoni23.vercel.app)
 ### Environment Variables
 Create a `.env` file for environment-specific configuration:
 
