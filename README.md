@@ -128,35 +128,6 @@ A modern React-based frontend for the Mobigas gas cylinder delivery management s
 - **Lucide React** - Beautiful icons
 - **Vite** - Fast build tool
 
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── Layout/
-│   │   ├── Header.jsx          # Navigation header
-│   │   ├── Footer.jsx          # Site footer
-│   │   ├── AppLayout.jsx       # Layout for protected routes
-│   │   └── PublicLayout.jsx    # Layout for public routes
-│   ├── ProtectedRoute.jsx      # Route guard for authenticated users
-│   ├── PublicRoute.jsx         # Route guard for public routes
-│   ├── AdminRoute.jsx          # Route guard for admin users
-│   └── LoadingSpinner.jsx      # Loading component
-├── context/
-│   └── AuthContext.jsx         # Authentication context
-├── pages/
-│   ├── Home.jsx                # Landing page
-│   ├── Login.jsx               # Login page
-│   ├── Register.jsx            # Registration page
-│   ├── Products.jsx            # Product listing
-│   ├── AdminUsers.jsx          # User management (admin)
-│   └── AdminOrders.jsx         # Order management (admin)
-├── services/
-│   └── api.js                  # API service functions
-├── App.jsx                     # Main app component
-├── main.jsx                    # App entry point
-└── index.css                   # Global styles
-```
 
 ## 🚀 Getting Started
 
@@ -171,7 +142,7 @@ src/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd client
+   cd frontend
    ```
 
 2. **Install dependencies**
@@ -280,7 +251,9 @@ pnpm build
 1. Connect your repository to Vercel
 2. Set environment variables if needed
 3. Deploy automatically on push to main branch
-
+   
+### View  the Deployment on Vercel 
+week8-capstone-mochoni23.vercel.app
 ### Environment Variables
 Create a `.env` file for environment-specific configuration:
 
@@ -309,3 +282,4 @@ For support and questions:
 ---
 
 **Mobigas** - Your trusted gas delivery partner across Kenya. 
+
