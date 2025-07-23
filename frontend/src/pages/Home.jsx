@@ -102,7 +102,7 @@ export default function Home() {
             <div className="relative">
               <div className="relative z-10">
                 <img
-                  src="https://images.pexels.com/photos/4254557/pexels-photo-4254557.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="https://www.istockphoto.com/photo/red-cylinders-with-propane-gas-cylinders-with-an-inscription-in-russian-propane-gm1277109882-376409623"
                   alt="LPG Gas Cylinder"
                   className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
                 />
